@@ -15,7 +15,7 @@ export enum TokenKind {
   RightBrace = "}",
   Space = " ",
   Identifier = "i",
-  LetKeyword = "let",
+  VarKeyword = "v",
   Comma = ",",
   Newline = "\n",
   Arrow = "=>",
@@ -27,7 +27,6 @@ export type OperatorTokenKind =
   | TokenKind.Minus
   | TokenKind.Asterisk
   | TokenKind.RightSlash
-  | TokenKind.Asterisk
   | TokenKind.AsteriskAsterisk
   | TokenKind.Percent;
 
@@ -48,6 +47,6 @@ export const lexer = buildLexer([
   [true, /^\{/g, TokenKind.LeftBrace],
   [true, /^\}/g, TokenKind.RightBrace],
   [true, /^=>/g, TokenKind.Arrow],
-  [true, /^let/g, TokenKind.LetKeyword],
+  [true, /^v/g, TokenKind.VarKeyword],
   [true, /^[a-zA-Z_][a-zA-Z0-9_]*/g, TokenKind.Identifier],
 ]);

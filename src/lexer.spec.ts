@@ -67,11 +67,11 @@ describe("lexer", () => {
   });
 
   it("handles variable declaration", () => {
-    let token = lexer.parse("let a = 1");
+    let token = lexer.parse("v a = 1");
 
     token = notUndefined(token);
-    assert.strictEqual(token.kind, TokenKind.LetKeyword);
-    assert.strictEqual(token.text, "let");
+    assert.strictEqual(token.kind, TokenKind.VarKeyword);
+    assert.strictEqual(token.text, "v");
 
     token = notUndefined(token.next);
     assert.strictEqual(token.kind, TokenKind.Identifier);

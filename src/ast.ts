@@ -32,7 +32,6 @@ export interface BinaryExpression extends BaseNode {
     | TokenKind.Minus
     | TokenKind.Asterisk
     | TokenKind.RightSlash
-    | TokenKind.Asterisk
     | TokenKind.Percent
     | TokenKind.AsteriskAsterisk;
   right: Expression;
@@ -57,8 +56,8 @@ export interface VariableDeclaration extends BaseNode {
 
 export interface FunctionExpression extends BaseNode {
   kind: "FunctionExpression";
-  parameters: Identifier[];
   body: Expression[];
+  parameters: Identifier[];
 }
 
 export interface FunctionCall extends BaseNode {

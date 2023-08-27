@@ -15,7 +15,7 @@ export const tokenColors: { [key in TokenKind]: string } = {
   [TokenKind.RightBrace]: "#4d4400",
   [TokenKind.Space]: "black",
   [TokenKind.Identifier]: "#005cc5",
-  [TokenKind.LetKeyword]: "#d73a49",
+  [TokenKind.VarKeyword]: "#d73a49",
   [TokenKind.Comma]: "rgb(78, 155, 86)",
   [TokenKind.Arrow]: "#6abba3",
   [TokenKind.Percent]: "#422c4f",

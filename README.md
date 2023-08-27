@@ -1,1 +1,4 @@
 # olang
+
+* `pnpm i`
+* 

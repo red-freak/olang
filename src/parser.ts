@@ -168,7 +168,7 @@ AssignmentExpression.setPattern(
 VariableDeclaration.setPattern(
   apply(
     seq(
-      tok(TokenKind.LetKeyword),
+      tok(TokenKind.VarKeyword),
       Identifier,
       tok(TokenKind.Equals),
       Expression
@@ -190,6 +190,16 @@ VariableDeclaration.setPattern(
 FunctionExpression.setPattern(
   apply(
     seq(
+      seq(
+        tok(TokenKind.LeftBrace),
+        opt_sc(
+          kleft(
+            list_sc(Expression, opt_sc(tok(TokenKind.Newline))),
+            opt_sc(tok(TokenKind.Newline))
+          )
+        ),
+        tok(TokenKind.RightBrace)
+      ),
       tok(TokenKind.LeftParen),
       opt_sc(
         kleft(
@@ -197,23 +207,9 @@ FunctionExpression.setPattern(
           opt_sc(tok(TokenKind.Comma))
         )
       ),
-      tok(TokenKind.RightParen),
-      tok(TokenKind.Arrow),
-      alt(
-        Expression,
-        seq(
-          tok(TokenKind.LeftBrace),
-          opt_sc(
-            kleft(
-              list_sc(Expression, opt_sc(tok(TokenKind.Newline))),
-              opt_sc(tok(TokenKind.Newline))
-            )
-          ),
-          tok(TokenKind.RightBrace)
-        )
-      )
+      tok(TokenKind.RightParen)
     ),
-    ([, parameters, , , body], tokenRange): ast.FunctionExpression => ({
+    ([body,l,parameters,r], tokenRange): ast.FunctionExpression => ({
       kind: "FunctionExpression",
       parameters: parameters?.filter((p): p is ast.Identifier => !!p) || [],
       body: Array.isArray(body) ? body[1] || [] : [body],

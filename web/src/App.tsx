@@ -22,9 +22,9 @@ import "./index.css";
 import { Editor } from "./Editor";
 
 const DEFAULT_CODE = `
-let add = (a, b) => {
+v add = {
   a + b
-}
+} (a, b)
 add(1, 2)
 `.trim();
 

@@ -15,7 +15,7 @@ export function printAst(node: ast.Node): string {
     case "Identifier":
       return node.name;
     case "VariableDeclaration":
-      return `let ${node.name.name} = ${printAst(node.initializer)}`;
+      return `v ${node.name.name} = ${printAst(node.initializer)}`;
     case "FunctionExpression":
       return `(${node.parameters.map(printAst).join(", ")}) => {\n${node.body
         .map(printAst)
